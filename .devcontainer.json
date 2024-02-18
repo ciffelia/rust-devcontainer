@@ -1,5 +1,7 @@
 {
-  "image": "rust:1.76.0-bookworm",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
   "features": {
     "ghcr.io/devcontainers/features/common-utils:2": {
       "username": "vscode",
