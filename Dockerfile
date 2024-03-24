@@ -3,7 +3,7 @@ FROM rust:1.77.0-bookworm
 ARG mold_version=2.30.0
 
 # Install mold
-RUN curl -L https://github.com/rui314/mold/archive/refs/tags/$mold_version.tar.gz | tar xz && \
+RUN curl -L https://github.com/rui314/mold/archive/refs/tags/v$mold_version.tar.gz | tar xz && \
     mkdir mold-$mold_version/build && \
     cd mold-$mold_version/build && \
     ../install-build-deps.sh && \
