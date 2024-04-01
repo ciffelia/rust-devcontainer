@@ -4,13 +4,12 @@ ARG mold_version=2.30.0
 
 # Install mold
 RUN curl -L https://github.com/rui314/mold/archive/refs/tags/v$mold_version.tar.gz | tar xz && \
-    mkdir mold-$mold_version/build && \
-    cd mold-$mold_version/build && \
-    ../install-build-deps.sh && \
-    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=c++ .. && \
-    cmake --build . -j "$(nproc)" && \
-    cmake --build . --target install && \
-    rm -rf /mold-$mold_version
+    cd mold-$mold_version && \
+    ./install-build-deps.sh && \
+    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=c++ -B build && \
+    cmake --build build -j "$(nproc)" && \
+    cmake --build build --target install && \
+    rm -rf .
 
 # Set up Rust to use mold
 RUN mkdir /.cargo && \
