@@ -1,5 +1,9 @@
 FROM rust:1.77.0-bookworm
 
+RUN export DEBIAN_FRONTEND=noninteractive && \
+    apt-get update && \
+    apt-get install -y --no-install-recommends clang
+
 ARG mold_version=2.30.0
 
 # Install mold
