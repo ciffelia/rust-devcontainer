@@ -8,4 +8,4 @@ RUN curl -fsSL "https://github.com/rui314/mold/releases/download/v$mold_version/
 # Set up Rust to use mold
 RUN mkdir /.cargo && \
     echo '[target.x86_64-unknown-linux-gnu]' >> /.cargo/config.toml && \
-    echo 'rustflags = ["-C", "link-arg=-fuse-ld=/usr/local/bin/mold"]' >> /.cargo/config.toml
+    echo 'rustflags = ["-C", "link-arg=-fuse-ld=mold"]' >> /.cargo/config.toml
