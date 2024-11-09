@@ -7,9 +7,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
 ARG mold_version=2.34.1
 
 # Install mold
-RUN curl -L "https://github.com/rui314/mold/releases/download/v$mold_version/mold-$mold_version-x86_64-linux.tar.gz" | tar xz && \
-    mv "mold-$mold_version-x86_64-linux"/* /usr/local && \
-    rm -r "mold-$mold_version-x86_64-linux"
+RUN curl -fsSL "https://github.com/rui314/mold/releases/download/v$mold_version/mold-$mold_version-x86_64-linux.tar.gz" | tar xzC /usr/local --strip-components 1
 
 # Set up Rust to use mold
 RUN mkdir /.cargo && \
