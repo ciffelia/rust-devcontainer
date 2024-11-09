@@ -7,14 +7,9 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
 ARG mold_version=2.34.1
 
 # Install mold
-RUN curl -L "https://github.com/rui314/mold/archive/refs/tags/v$mold_version.tar.gz" | tar xz && \
-    cd "mold-$mold_version" && \
-    ./install-build-deps.sh && \
-    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=c++ -B build && \
-    cmake --build build -j "$(nproc)" && \
-    cmake --build build --target install && \
-    cd .. && \
-    rm -rf "mold-$mold_version"
+RUN curl -L "https://github.com/rui314/mold/releases/download/v$mold_version/mold-$mold_version-x86_64-linux.tar.gz" | tar xz && \
+    mv "mold-$mold_version"/* /usr/local && \
+    rm -r "mold-$mold_version"
 
 # Set up Rust to use mold
 RUN mkdir /.cargo && \
