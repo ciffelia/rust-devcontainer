@@ -1,6 +1,6 @@
-FROM rust:1.82.0-bookworm
+FROM rust:1.83.0-bookworm
 
-ARG mold_version=2.34.1
+ARG mold_version=2.35.1
 
 # Install mold
 RUN curl -fsSL "https://github.com/rui314/mold/releases/download/v$mold_version/mold-$mold_version-x86_64-linux.tar.gz" | tar xzC /usr/local --strip-components 1
